@@ -20,10 +20,22 @@ export default function DownloadButton({ documentId, fileName }) {
 
   return (
     <div>
-      <button type="button" onClick={handleDownload} disabled={isDownloading}>
+      <button
+        type="button"
+        onClick={handleDownload}
+        disabled={isDownloading}
+        className="inline-flex w-full items-center justify-center rounded-lg border border-brand-200 bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 transition hover:bg-brand-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
+      >
         {isDownloading ? 'Baixando...' : 'Download'}
       </button>
-      {error ? <p style={{ color: '#b00020' }}>{error}</p> : null}
+      {error ? (
+        <p
+          role="alert"
+          className="mt-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm font-medium text-red-700"
+        >
+          {error}
+        </p>
+      ) : null}
     </div>
   );
 }
